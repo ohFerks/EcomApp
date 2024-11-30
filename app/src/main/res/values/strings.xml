@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">EcomApp</string>
+    <string name="labelRegistration">Регистрация</string>
+</resources>
