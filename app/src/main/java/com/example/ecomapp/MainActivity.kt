@@ -33,20 +33,33 @@ class MainActivity : AppCompatActivity() {
             val email = userEmail.text.toString().trim()
             val password = userPassword.text.toString().trim()
 
+
+
             if (login == "" || email == "" || password == "")
                 Toast.makeText(this, "Ошибка. Не все поля заполнены", Toast.LENGTH_LONG).show()
             else{
                 val user = User(login, email, password)
 
                 val db = DbHelper(this, null)
-                db.addUser(user)
-                Toast.makeText(this, "Пользователь $login добавлен", Toast.LENGTH_LONG).show()
+                if (db.addUser(user)){
+                    Toast.makeText(this, "Пользователь $login добавлен", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, AdressAndNumberActivity::class.java)
+                    intent.putExtra("login", login)
+                    startActivity(intent)
+                }
+                else{
+                    Toast.makeText(this, "Ошибка. Пользователь с таким логином уже существует", Toast.LENGTH_LONG).show()
+                }
+
+
 
                 userLogin.text.clear()
                 userEmail.text.clear()
                 userPassword.text.clear()
             }
 
+//            val db = DbHelper(this, null)
+//            db.deleteDatabase()
         }
 
         linkToAuth.setOnClickListener {
