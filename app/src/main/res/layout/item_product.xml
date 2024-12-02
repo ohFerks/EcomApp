@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="#EDF4C1"
     android:padding="8dp">
 
     <ImageView
@@ -40,8 +41,11 @@
 
     <Button
         android:id="@+id/addToCartButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add to Cart"
-        android:layout_marginTop="8dp" />
+        android:layout_width="120dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="Добавить в корзину"
+        android:textAlignment="center"
+        android:textColor="#000000" />
 </LinearLayout>
