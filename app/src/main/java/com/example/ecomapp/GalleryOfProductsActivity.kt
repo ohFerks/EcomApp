@@ -37,6 +37,8 @@ class GalleryOfProductsActivity : AppCompatActivity() {
     private fun addToCart(product: Product) {
         cartList.add(product)
         Toast.makeText(this, "${product.name} added to cart", Toast.LENGTH_SHORT).show()
+
+        Toast.makeText(this, "message", Toast.LENGTH_SHORT).show()
     }
 
 }
