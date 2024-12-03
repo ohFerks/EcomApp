@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "828513986762",
+    "project_id": "e-com-service",
+    "storage_bucket": "e-com-service.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:828513986762:android:ee4c58546d5f339e736c33",
+        "android_client_info": {
+          "package_name": "com.example.ecomapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMqovDD_wWWkwDw0Z35LfTOOgPAvZIx-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
