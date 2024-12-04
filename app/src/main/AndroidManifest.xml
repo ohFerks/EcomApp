@@ -35,7 +35,11 @@
             android:name=".AuthActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".AuthActivity"
+            android:exported="false"
+            tools:ignore="DuplicateActivity" />
+        <activity
+            android:name=".a1"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
