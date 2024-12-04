@@ -1,5 +1,6 @@
 package com.example.ecomapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -37,7 +38,13 @@ class CartActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
 
         payButton.setOnClickListener {
-            Toast.makeText(this, "Оплачено: $totalPrice ₽", Toast.LENGTH_SHORT).show()
+            if (cartList.isEmpty()){
+                Toast.makeText(this, "Добавьте продукты для перехода к оплате", Toast.LENGTH_LONG).show()
+            }
+            else{
+                val intent = Intent(this, PaymentActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         goBackButton.setOnClickListener {

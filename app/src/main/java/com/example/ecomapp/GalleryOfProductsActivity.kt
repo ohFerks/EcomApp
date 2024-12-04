@@ -49,10 +49,8 @@ class GalleryOfProductsActivity : AppCompatActivity() {
         recyclerView.adapter = ProductAdapter(productList) { product, isAdded ->
             if (isAdded) {
                 cartList.add(product)
-                Toast.makeText(this, "${product.name} added to cart", Toast.LENGTH_SHORT).show()
             } else {
                 cartList.remove(product)
-                Toast.makeText(this, "${product.name} remove from cart", Toast.LENGTH_SHORT).show()
             }
         }
 
