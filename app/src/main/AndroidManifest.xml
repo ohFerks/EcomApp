@@ -35,17 +35,17 @@
             android:name=".AuthActivity"
             android:exported="false" />
         <activity
-            android:name=".AuthActivity"
-            android:exported="false"
-            tools:ignore="DuplicateActivity" />
-        <activity
-            android:name=".a1"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".a1"
+            android:exported="true">
         </activity>
 
         <meta-data
