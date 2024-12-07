@@ -33,7 +33,6 @@
         android:layout_gravity="end"
         android:layout_margin="16dp"
         android:backgroundTint="#4CAF50"
-        android:drawableLeft="@drawable/ic_add"
         android:text="Добавить продукт" />
 
 </LinearLayout>
