@@ -13,6 +13,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var phoneNumber: EditText
     private lateinit var password: EditText
     private lateinit var loginButton: Button
+    private lateinit var goToRegButton: Button // Кнопка перехода на регистрацию
     private lateinit var databaseReference: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
         phoneNumber = findViewById(R.id.phone_number)
         password = findViewById(R.id.password)
         loginButton = findViewById(R.id.login_button)
+        goToRegButton = findViewById(R.id.go_to_reg) // Инициализация кнопки
 
         databaseReference = FirebaseDatabase.getInstance("https://ecomappbd-69524-default-rtdb.europe-west1.firebasedatabase.app")
             .getReference("users")
@@ -58,6 +60,12 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Заполните все поля", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        // Обработчик для перехода на экран регистрации
+        goToRegButton.setOnClickListener {
+            val intent = Intent(this, RegistrationActivity::class.java)
+            startActivity(intent)
         }
     }
 }
