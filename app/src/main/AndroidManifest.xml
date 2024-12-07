@@ -27,6 +27,9 @@
             android:exported="false" />
         <activity
             android:name=".GalleryOfProductsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RegistrationActivity"
             android:exported="true" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -37,7 +40,7 @@
 
     <activity
             android:name=".AdressAndNumberActivity"
-            android:exported="false" />
+            android:exported="true" />
 
         <activity
             android:name=".a1"
