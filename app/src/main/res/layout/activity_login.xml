@@ -19,24 +19,9 @@
         android:hint="Введите пароль"
         android:inputType="textPassword" />
 
-    <Switch
-        android:id="@+id/farmer_switch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Вы фермер?"
-        android:layout_marginTop="16dp" />
-
-    <Button
-        android:id="@+id/register_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Зарегистрироваться" />
-
     <Button
         android:id="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Войти" />
-
-
 </LinearLayout>

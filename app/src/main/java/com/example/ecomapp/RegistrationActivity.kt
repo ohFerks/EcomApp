@@ -1,16 +1,13 @@
 package com.example.ecomapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Switch
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 
 class RegistrationActivity : AppCompatActivity() {
 
@@ -18,6 +15,7 @@ class RegistrationActivity : AppCompatActivity() {
     private lateinit var password: EditText
     private lateinit var farmerSwitch: Switch
     private lateinit var registerButton: Button
+    private lateinit var loginButton: Button
     private lateinit var databaseReference: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +30,7 @@ class RegistrationActivity : AppCompatActivity() {
         password = findViewById(R.id.password)
         farmerSwitch = findViewById(R.id.farmer_switch)
         registerButton = findViewById(R.id.register_button)
+        loginButton = findViewById(R.id.login_button) // Добавил кнопку для перехода на авторизацию
 
         registerButton.setOnClickListener {
             val phone = phoneNumber.text.toString().trim()
@@ -50,13 +49,18 @@ class RegistrationActivity : AppCompatActivity() {
                 Toast.makeText(this, "Заполните все поля", Toast.LENGTH_SHORT).show()
             }
         }
+
+        loginButton.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun checkIfPhoneExists(phone: String, callback: (Boolean) -> Unit) {
         databaseReference.orderByChild("phone").equalTo(phone)
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    callback(snapshot.exists()) // Если данные есть, вернёт true
+                    callback(snapshot.exists())
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -78,7 +82,9 @@ class RegistrationActivity : AppCompatActivity() {
         databaseReference.child(userId).setValue(user)
             .addOnSuccessListener {
                 Toast.makeText(this, "Регистрация успешна!", Toast.LENGTH_SHORT).show()
-                // Здесь можно переходить на следующий экран
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Ошибка регистрации: ${e.message}", Toast.LENGTH_SHORT).show()
