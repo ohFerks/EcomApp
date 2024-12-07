@@ -11,13 +11,21 @@
         <EditText
             android:id="@+id/a2"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="Введите текст" />
+            android:layout_height="wrap_content"
+            android:hint="Заголовок" />
+
+        <EditText
+            android:id="@+id/a4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Описание" />
 
         <Button
             android:id="@+id/a3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             android:text="Отправить" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

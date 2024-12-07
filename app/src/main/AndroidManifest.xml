@@ -27,25 +27,28 @@
             android:exported="false" />
         <activity
             android:name=".GalleryOfProductsActivity"
-            android:exported="false" />
-        <activity
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+
+    <activity
             android:name=".AdressAndNumberActivity"
             android:exported="false" />
+
         <activity
-            android:name=".AuthActivity"
-            android:exported="false" />
+            android:name=".a1"
+            android:exported="true"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
-            android:name=".a1"
-            android:exported="true">
+            android:name=".AuthActivity"
+            android:exported="false">
         </activity>
 
         <meta-data

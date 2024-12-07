@@ -10,38 +10,49 @@ import com.google.firebase.database.FirebaseDatabase
 import android.util.Log
 
 class a1 : AppCompatActivity() {
-    private lateinit var inputText: EditText
+    private lateinit var textField1: EditText
+    private lateinit var textField2: EditText
     private lateinit var sendButton: Button
     private lateinit var databaseReference: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.a1) // Убедись, что это правильный layout
+        setContentView(R.layout.a1)
 
-        // Инициализация Firebase
-        databaseReference = FirebaseDatabase.getInstance("https://ecomappbd-69524-default-rtdb.europe-west1.firebasedatabase.app").getReference("a1")
-        inputText = findViewById(R.id.a2)
+        databaseReference = FirebaseDatabase.getInstance("https://ecomappbd-69524-default-rtdb.europe-west1.firebasedatabase.app")
+            .getReference("a1")
+
+        textField1 = findViewById(R.id.a2)
+        textField2 = findViewById(R.id.a4)
+
         sendButton = findViewById(R.id.a3)
 
         sendButton.setOnClickListener {
-            val text = inputText.text.toString().trim()
+            val text1 = textField1.text.toString().trim()
+            val text2 = textField2.text.toString().trim()
 
-            if (text.isNotEmpty()) {
+            if (text1.isNotEmpty() && text2.isNotEmpty()) {
                 val messageId = databaseReference.push().key
                 if (messageId != null) {
-                    databaseReference.child(messageId).setValue(text)
+                    val productData = mapOf(
+                        "id" to System.currentTimeMillis().toString(),
+                        "text1" to text1,
+                        "text2" to text2, // Добавлено
+                        "weight" to "1kg",
+                        "imageResource" to "default_image"
+                    )
+                    databaseReference.child(messageId).setValue(productData)
                         .addOnSuccessListener {
-                            Toast.makeText(this, "Текст отправлен!", Toast.LENGTH_SHORT).show()
-                            inputText.setText("") // Очистка поля
-                            Log.d("Firebase", "Данные успешно записаны")
+                            Toast.makeText(this, "Данные успешно отправлены!", Toast.LENGTH_SHORT).show()
+                            textField1.setText("")
+                            textField2.setText("")
                         }
                         .addOnFailureListener { e ->
                             Toast.makeText(this, "Ошибка: ${e.message}", Toast.LENGTH_SHORT).show()
-                            Log.e("Firebase", "Ошибка записи: ${e.message}")
                         }
                 }
             } else {
-                Toast.makeText(this, "Введите текст!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Заполните оба поля!", Toast.LENGTH_SHORT).show()
             }
         }
     }
