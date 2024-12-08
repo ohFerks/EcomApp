@@ -39,6 +39,8 @@ class GalleryOfProductsActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = GridLayoutManager(this, 3)
 
+        loadProductsFromDatabase()
+
         adapter = ProductAdapter(productList) { product, isAdded ->
             if (isAdded) {
                 cartList.add(product)
@@ -49,12 +51,19 @@ class GalleryOfProductsActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
 
         cartButton.setOnClickListener {
+//            for (n in 0..cartList.size - 1){
+//                val prod = cartList[n].name
+//                Toast.makeText(this, "$prod", Toast.LENGTH_LONG).show()
+//            }
+
+
+            //Toast.makeText(this, "$cartList", Toast.LENGTH_LONG).show()
             val intent = Intent(this, CartActivity::class.java)
             intent.putParcelableArrayListExtra("cartList", ArrayList(cartList))
             startActivity(intent)
         }
 
-        loadProductsFromDatabase() // Загружаем данные из Firebase
+         // Загружаем данные из Firebase
     }
 
     private fun loadProductsFromDatabase() {
@@ -69,9 +78,10 @@ class GalleryOfProductsActivity : AppCompatActivity() {
                             val name = productData["text1"]?.toString() ?: "Без имени"
                             val price = productData["text2"]?.toString()?.toDoubleOrNull() ?: 0.0
                             val weight = productData["weight"]?.toString() ?: "1kg"
+                            val quantity = 1
                             val imageResource = R.drawable.kapusta
 
-                            val product = Product(id, name, price, weight, imageResource)
+                            val product = Product(id, name, price, weight, quantity, imageResource)
                             productList.add(product)
                         } catch (e: Exception) {
                             Toast.makeText(
@@ -82,6 +92,7 @@ class GalleryOfProductsActivity : AppCompatActivity() {
                         }
                     }
                 }
+
                 adapter.notifyDataSetChanged()
             }
 

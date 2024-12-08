@@ -50,8 +50,9 @@ class PaymentActivity : AppCompatActivity() {
                 intent.putExtra("name", name)
                 intent.putExtra("phone", phone)
                 intent.putExtra("address", address)
-                intent.putExtra("totalPrice", intent.getDoubleExtra("totalPrice", 0.0))
-                intent.putExtra("cartList", intent.getSerializableExtra("cartList"))
+                intent.putExtra("totalPrice", intent.getDoubleExtra("totalPrice", 1.0))
+                //intent.putParcelableArrayListExtra("cartList", intent.getParcelableArrayListExtra("cartList"))
+                //intent.putExtra("cartList", intent.getSerializableExtra("cartList"))
                 startActivity(intent)
             }
         }

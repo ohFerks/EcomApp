@@ -36,7 +36,7 @@ class CartAdapter(
         holder.productName.text = product.name
         holder.productWeight.text = "Вес: ${product.weight}"
         holder.productPrice.text = "Цена: ${product.price}"
-        holder.productQuantity.text = "1"
+        holder.productQuantity.text = "${product.quantity}"
 
         var currentQuantity = 1
         holder.productQuantity.text = currentQuantity.toString()
