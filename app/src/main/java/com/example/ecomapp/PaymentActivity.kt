@@ -46,11 +46,16 @@ class PaymentActivity : AppCompatActivity() {
                 Toast.makeText(this, "Заполните все поля", Toast.LENGTH_SHORT).show()
             } else {
                 // Передача данных в CheckoutActivity
+                val products = intent.getStringExtra("products")
+                val totalPrice = intent.getDoubleExtra("totalPrice", 1.0)
+
                 val intent = Intent(this, CheckoutActivity::class.java)
                 intent.putExtra("name", name)
                 intent.putExtra("phone", phone)
                 intent.putExtra("address", address)
-                intent.putExtra("totalPrice", intent.getDoubleExtra("totalPrice", 1.0))
+                intent.putExtra("totalPrice", totalPrice)
+                intent.putExtra("order", products)
+                Toast.makeText(this, "${intent.getStringExtra("order")}", Toast.LENGTH_LONG).show()
                 //intent.putParcelableArrayListExtra("cartList", intent.getParcelableArrayListExtra("cartList"))
                 //intent.putExtra("cartList", intent.getSerializableExtra("cartList"))
                 startActivity(intent)

@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlin.reflect.typeOf
 
 class CartActivity : AppCompatActivity() {
 
@@ -50,15 +51,17 @@ class CartActivity : AppCompatActivity() {
 //                    Toast.makeText(this, "$prod", Toast.LENGTH_LONG).show()
 //                }
 
-                val prod = cartList.joinToString(separator = "\n") { product ->
+                val products = cartList.joinToString(separator = "\n") { product ->
                     "Название: ${product.name}, Вес: ${product.weight}, Цена: ${product.price}, "
                 }
-                Toast.makeText(this, prod, Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "${products}", Toast.LENGTH_LONG).show()
 
 
 
                 val intent = Intent(this, PaymentActivity::class.java)
-                intent.putParcelableArrayListExtra("cartList", ArrayList(cartList))
+                intent.putExtra("totalPrice", totalPrice)
+                intent.putExtra("products", products)
+                //intent.putParcelableArrayListExtra("cartList", ArrayList(cartList))
                 startActivity(intent)
             }
         }
