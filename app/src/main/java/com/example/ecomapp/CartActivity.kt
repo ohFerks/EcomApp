@@ -42,7 +42,23 @@ class CartActivity : AppCompatActivity() {
                 Toast.makeText(this, "Добавьте продукты для перехода к оплате", Toast.LENGTH_LONG).show()
             }
             else{
+//                val products = cartList.joinToString(separator = "\n") { product ->
+//                    "Название: ${product.name}, Вес: ${product.weight}, Цена: ${product.price}, "
+//                }
+//                for (n in 0..cartList.size - 1){
+//                    val prod = cartList[n].name
+//                    Toast.makeText(this, "$prod", Toast.LENGTH_LONG).show()
+//                }
+
+                val prod = cartList.joinToString(separator = "\n") { product ->
+                    "Название: ${product.name}, Вес: ${product.weight}, Цена: ${product.price}, "
+                }
+                Toast.makeText(this, prod, Toast.LENGTH_LONG).show()
+
+
+
                 val intent = Intent(this, PaymentActivity::class.java)
+                intent.putParcelableArrayListExtra("cartList", ArrayList(cartList))
                 startActivity(intent)
             }
         }
