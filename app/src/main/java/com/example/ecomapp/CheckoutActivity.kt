@@ -29,7 +29,8 @@ class CheckoutActivity : AppCompatActivity() {
         val phone = intent.getStringExtra("phone") ?: ""
         val address = intent.getStringExtra("address") ?: ""
         val totalPrice = intent.getDoubleExtra("totalPrice", 0.0)
-        val cartList = intent.getSerializableExtra("cartList") as? List<Product> ?: emptyList()
+        val order1 = intent.getStringExtra("order") ?: "пусто"
+        //val cartList = intent.getSerializableExtra("cartList") as? List<Product> ?: emptyList()
         //val cartList = intent.getParcelableArrayListExtra("cartList") ?: mutableListOf()
 
 //        val cartListString = cartList.joinToString(separator = "\n") { product ->
@@ -57,7 +58,7 @@ class CheckoutActivity : AppCompatActivity() {
                 "phone" to phone,
                 "address" to address,
                 "totalPrice" to totalPrice,
-                "cartList" to cartList
+                "order" to order1
             )
 //            cartListString.forEachIndexed { index, item ->
 //                order["product_$index"] = item
