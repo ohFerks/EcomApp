@@ -7,8 +7,8 @@ data class Product(
     val id: Int,
     val name: String,
     val price: Double,
-    val weight: String,
-    val quantity: Int,
+    val weight: Double,
+    var quantity: Int = 1,
     val imageResId: Int
 ) : Parcelable {
     // Конструктор для восстановления объекта из Parcel
@@ -16,7 +16,7 @@ data class Product(
         parcel.readInt(),
         parcel.readString() ?: "",
         parcel.readDouble(),
-        parcel.readString() ?: "",
+        parcel.readDouble(),
         parcel.readInt(),
         parcel.readInt()
     )
@@ -26,7 +26,7 @@ data class Product(
         parcel.writeInt(id)
         parcel.writeString(name)
         parcel.writeDouble(price)
-        parcel.writeString(weight)
+        parcel.writeDouble(weight)
         parcel.writeInt(quantity)
         parcel.writeInt(imageResId)
     }

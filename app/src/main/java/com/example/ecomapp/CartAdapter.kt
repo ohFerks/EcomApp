@@ -36,16 +36,16 @@ class CartAdapter(
         holder.productName.text = product.name
         holder.productWeight.text = "Вес: ${product.weight}"
         holder.productPrice.text = "Цена: ${product.price}"
-        holder.productQuantity.text = "${product.quantity}"
+        holder.productQuantity.text = product.quantity.toString()
 
         var currentQuantity = 1
         holder.productQuantity.text = currentQuantity.toString()
 
         holder.minusButton.setOnClickListener {
-            if (currentQuantity > 1) {
-                currentQuantity--
-                holder.productQuantity.text = currentQuantity.toString()
-                onQuantityChange(product, currentQuantity) // Уведомляем об изменении
+            if (product.quantity > 1) {
+                product.quantity--
+                holder.productQuantity.text = product.quantity.toString()
+                onQuantityChange(product, product.quantity) // Уведомляем об изменении
             }
         }
 
@@ -58,9 +58,9 @@ class CartAdapter(
 //        }
 
         holder.plusButton.setOnClickListener {
-            currentQuantity++
-            holder.productQuantity.text = currentQuantity.toString()
-            onQuantityChange(product, currentQuantity) // Уведомляем об изменении
+            product.quantity++
+            holder.productQuantity.text = product.quantity.toString()
+            onQuantityChange(product, product.quantity) // Уведомляем об изменении
         }
 
 //        holder.plusButton.setOnClickListener {
@@ -70,5 +70,5 @@ class CartAdapter(
 //        }
     }
 
-    override fun getItemCount() = cartList.size
+    override fun getItemCount(): Int = cartList.size
 }

@@ -77,7 +77,7 @@ class GalleryOfProductsActivity : AppCompatActivity() {
                             val id = productData["id"]?.toString()?.toIntOrNull() ?: 0
                             val name = productData["text1"]?.toString() ?: "Без имени"
                             val price = productData["text2"]?.toString()?.toDoubleOrNull() ?: 0.0
-                            val weight = productData["weight"]?.toString() ?: "1kg"
+                            val weight = productData["weight"]?.toString()?.toDoubleOrNull() ?: 1.0
                             val quantity = 1
                             val imageResource = R.drawable.kapusta
 

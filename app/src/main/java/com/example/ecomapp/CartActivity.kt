@@ -1,5 +1,6 @@
 package com.example.ecomapp
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -13,7 +14,6 @@ import kotlin.reflect.typeOf
 class CartActivity : AppCompatActivity() {
 
     private var cartList = mutableListOf<Product>()
-    private val productQuantities = mutableMapOf<Product, Int>()
     private var totalPrice = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,12 +26,7 @@ class CartActivity : AppCompatActivity() {
 
         cartList = intent.getParcelableArrayListExtra("cartList") ?: mutableListOf()
 
-        cartList.forEach { product ->
-            productQuantities[product] = 1 // Начальное количество
-        }
-
         val adapter = CartAdapter(cartList) { product, quantity ->
-            productQuantities[product] = quantity // Обновляем количество в Map
             calculateTotalPrice() // Пересчитываем сумму
         }
 
@@ -43,25 +38,13 @@ class CartActivity : AppCompatActivity() {
                 Toast.makeText(this, "Добавьте продукты для перехода к оплате", Toast.LENGTH_LONG).show()
             }
             else{
-//                val products = cartList.joinToString(separator = "\n") { product ->
-//                    "Название: ${product.name}, Вес: ${product.weight}, Цена: ${product.price}, "
-//                }
-//                for (n in 0..cartList.size - 1){
-//                    val prod = cartList[n].name
-//                    Toast.makeText(this, "$prod", Toast.LENGTH_LONG).show()
-//                }
-
                 val products = cartList.joinToString(separator = "\n") { product ->
-                    "Название: ${product.name}, Вес: ${product.weight}, Цена: ${product.price}, "
+                    "${product.name} ${product.weight * product.quantity} кг"
                 }
-                Toast.makeText(this, "${products}", Toast.LENGTH_LONG).show()
-
-
 
                 val intent = Intent(this, PaymentActivity::class.java)
                 intent.putExtra("totalPrice", totalPrice)
                 intent.putExtra("products", products)
-                //intent.putParcelableArrayListExtra("cartList", ArrayList(cartList))
                 startActivity(intent)
             }
         }
@@ -74,9 +57,8 @@ class CartActivity : AppCompatActivity() {
     }
 
     private fun calculateTotalPrice() {
-        totalPrice = productQuantities.entries.sumOf { (product, quantity) ->
-            product.price * quantity
-        }
+        totalPrice = cartList.sumOf { it.price * it.quantity }
+
         // Format the total price to two decimal places
         val formattedPrice = String.format("%.2f", totalPrice)
         findViewById<TextView>(R.id.totalPrice).text = "Итого: $formattedPrice ₽"

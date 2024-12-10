@@ -55,9 +55,6 @@ class PaymentActivity : AppCompatActivity() {
                 intent.putExtra("address", address)
                 intent.putExtra("totalPrice", totalPrice)
                 intent.putExtra("order", products)
-                Toast.makeText(this, "${intent.getStringExtra("order")}", Toast.LENGTH_LONG).show()
-                //intent.putParcelableArrayListExtra("cartList", intent.getParcelableArrayListExtra("cartList"))
-                //intent.putExtra("cartList", intent.getSerializableExtra("cartList"))
                 startActivity(intent)
             }
         }

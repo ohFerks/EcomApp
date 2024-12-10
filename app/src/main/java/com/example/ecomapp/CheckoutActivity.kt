@@ -30,12 +30,6 @@ class CheckoutActivity : AppCompatActivity() {
         val address = intent.getStringExtra("address") ?: ""
         val totalPrice = intent.getDoubleExtra("totalPrice", 0.0)
         val order1 = intent.getStringExtra("order") ?: "пусто"
-        //val cartList = intent.getSerializableExtra("cartList") as? List<Product> ?: emptyList()
-        //val cartList = intent.getParcelableArrayListExtra("cartList") ?: mutableListOf()
-
-//        val cartListString = cartList.joinToString(separator = "\n") { product ->
-//            "Название: ${product.name}, Вес: ${product.weight}, Цена: ${product.price}, "
-//        }
 
         //val cartListString = "сосиска"
 
@@ -53,12 +47,14 @@ class CheckoutActivity : AppCompatActivity() {
 
             val orderId = databaseReference.push().key ?: return@setOnClickListener
 
+            val order2 = order1.split("\n")
+
             val order = mutableMapOf(
                 "name" to name,
                 "phone" to phone,
                 "address" to address,
-                "totalPrice" to totalPrice,
-                "order" to order1
+                "totalPrice" to "${totalPrice} руб",
+                "order" to order2
             )
 //            cartListString.forEachIndexed { index, item ->
 //                order["product_$index"] = item
@@ -68,17 +64,12 @@ class CheckoutActivity : AppCompatActivity() {
                 .addOnSuccessListener {
                     Toast.makeText(this, "Оплата завершена. Заказ создан", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, LoginActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     startActivity(intent)
-                    finish()
                 }
                 .addOnFailureListener { e ->
                     Toast.makeText(this, "Ошибка регистрации: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
-            //Toast.makeText(this, "Оплата завершена. Спасибо за заказ!", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            startActivity(intent)
-            //saveOrderToFirebase(name, phone, address, totalPrice, cartList)
         }
     }
 
