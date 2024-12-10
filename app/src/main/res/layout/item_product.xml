@@ -8,6 +8,7 @@
 
     android:background="@drawable/rounded_background">
 
+
     <androidx.cardview.widget.CardView
         android:layout_width="112dp"
         android:layout_height="112dp"
