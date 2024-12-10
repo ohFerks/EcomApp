@@ -9,10 +9,31 @@
     android:orientation="vertical"
     tools:context=".GalleryOfProductsActivity">
 
+    <Button
+        android:id="@+id/goToProfileButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="@color/black"
+        android:text="Перейти в профиль"
+        android:textColor="@android:color/white"
+
+        android:textSize="16sp" />
+
+
+
+
+
+
+
+
+
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_marginLeft="14dp"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/montserrat_alternates_bold"
         android:text="Продукты"
@@ -22,9 +43,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-
         android:layout_width="match_parent"
-
         android:layout_height="719dp"
         android:layout_weight="1" />
 
@@ -51,6 +70,9 @@
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+
+
 
 </LinearLayout>
 
