@@ -1,96 +1,122 @@
-<LinearLayout
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="0dp"
-    android:background="@drawable/round_for_cart1">
+    android:layout_marginHorizontal="5dp"
+    android:layout_marginVertical="5dp"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    android:background="@color/black">
 
-    <!-- Левая часть: Фотография продукта -->
-    <ImageView
-        android:id="@+id/cartProductImage"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="8dp"
-        android:adjustViewBounds="true"
 
-        android:scaleType="centerCrop"
-        android:lines='2'/>
-
-    <!-- Правая часть: Название, вес, цена -->
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center_vertical">
-
-        <!-- Название продукта -->
-        <TextView
-            android:id="@+id/cartProductName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Название продукта"
-            android:textSize="11sp"
-            android:textStyle="bold"
-            android:paddingBottom="4dp" />
-
-        <!-- Вес продукта -->
-        <TextView
-            android:id="@+id/cartProductWeight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Вес: 500г"
-            android:textSize="9sp"
-            android:paddingBottom="4dp" />
-
-        <!-- Цена продукта -->
-        <TextView
-            android:id="@+id/cartProductPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Цена: 200 ₽"
-            android:textSize="14sp"
-            android:textStyle="italic" />
-    </LinearLayout>
-
-    <!-- Панель управления: кнопки "-" и "+" -->
-    <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/round_for_cart"
-        android:gravity="center_vertical">
+        android:background="@drawable/round_for_cart1"
+        android:padding="0dp">
 
-        <Button
-            android:id="@+id/minusButton"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:backgroundTint="#FFFFFF"
-            android:elevation="8dp"
-            android:padding="0dp"
-            android:text="—"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:textColor="#000000" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp">
 
-        <TextView
-            android:id="@+id/productQuantity"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:text="1"
-            android:textSize="20sp" />
+            <ImageView
+                android:id="@+id/cartProductImage"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="8dp"
 
-        <Button
-            android:id="@+id/plusButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:backgroundTint="#FFFFFF"
-            android:padding="0dp"
-            android:text="+"
-            android:textSize="20sp"
-            android:textColor="#000000"/>
+                android:scaleType="centerCrop"
+                android:background="@drawable/round_for_cart"/>
+        </androidx.cardview.widget.CardView>
+        <!-- Левая часть: Фотография продукта -->
+
+
+        <!-- Правая часть: Название, вес, цена -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginLeft="8dp"
+            android:gravity="center_vertical">
+
+            <!-- Название продукта -->
+            <TextView
+                android:id="@+id/cartProductName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_alternates_bold"
+                android:text="Название продукта"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <!-- Вес продукта -->
+            <TextView
+                android:id="@+id/cartProductWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_alternates"
+                android:paddingBottom="4dp"
+                android:text="Вес: 500г"
+                android:textSize="9sp" />
+
+            <!-- Цена продукта -->
+            <TextView
+                android:id="@+id/cartProductPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Цена: 200 ₽"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/montserrat_alternates_bold"/>
+        </LinearLayout>
+
+        <!-- Панель управления: кнопки "-" и "+" -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginVertical="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/round_for_cart"
+            android:gravity="center_vertical">
+
+            <Button
+                android:id="@+id/minusButton"
+                android:layout_width="35dp"
+                android:layout_height="40dp"
+                android:backgroundTint="#FFFFFF"
+                android:padding="0dp"
+                android:text="—"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/productQuantity"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:text="1"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/plusButton"
+                android:layout_width="35dp"
+                android:layout_height="40dp"
+                android:backgroundTint="#FFFFFF"
+                android:padding="0dp"
+                android:text="+"
+                android:textSize="20sp"
+                android:textColor="#000000"/>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+
+</androidx.cardview.widget.CardView>
+
+
