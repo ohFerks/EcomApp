@@ -37,22 +37,11 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>
-    <activity
-            android:name=".AdressAndNumberActivity"
-            android:exported="true" />
 
         <activity
             android:name=".a1"
             android:exported="true">
 
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".AuthActivity"
-            android:exported="false">
         </activity>
         <activity android:name=".LoginActivity" />
 

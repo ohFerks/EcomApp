@@ -14,26 +14,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="350dp"
         android:layout_marginBottom="12dp"
-        android:text="Оплатите заказ переводом на номер карты"
+        android:text="Заказ оформлен!"
         android:textSize="24sp"
         android:textAlignment="center"
         android:textStyle="bold" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        android:textAlignment="center"
-        android:text="1234567890" />
-
-    <Button
-        android:id="@+id/payNowButton"
+        android:id="@+id/countdownMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Оплатить"
-        android:backgroundTint="#0D7255"
-        android:textColor="#FFFFFF"
-        android:padding="12dp" />
+        android:text="Вы будете возвращены на страницу продуктов через: 5 секунд"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
 </LinearLayout>

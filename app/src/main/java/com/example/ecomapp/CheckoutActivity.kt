@@ -2,10 +2,13 @@ package com.example.ecomapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.os.Handler
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -13,90 +16,32 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class CheckoutActivity : AppCompatActivity() {
 
-    private lateinit var databaseReference: DatabaseReference
+    private lateinit var countdownMessage: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout)
 
-        val payNowButton: Button = findViewById(R.id.payNowButton)
+        countdownMessage = findViewById(R.id.countdownMessage)
 
-        databaseReference = FirebaseDatabase.getInstance("https://ecomappbd-69524-default-rtdb.europe-west1.firebasedatabase.app")
-            .getReference("orders")
+        // Настраиваем таймер на 5 секунд
+        val countdownTime = 5000L // 5 секунд в миллисекундах
+        val timer = object : CountDownTimer(countdownTime, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                // Обновляем текст с оставшимся временем
+                val secondsLeft = millisUntilFinished / 1000
+                countdownMessage.text = "Вы будете возвращены на страницу продуктов через: $secondsLeft секунд"
+            }
 
-        // Получаем данные из Intent
-        val name = intent.getStringExtra("name") ?: ""
-        val phone = intent.getStringExtra("phone") ?: ""
-        val address = intent.getStringExtra("address") ?: ""
-        val totalPrice = intent.getDoubleExtra("totalPrice", 0.0)
-        val order1 = intent.getStringExtra("order") ?: "пусто"
-
-        //val cartListString = "сосиска"
-
-        payNowButton.visibility = View.GONE
-
-        // Создаем Handler для задержки
-        val handler = Handler(mainLooper)
-        handler.postDelayed({
-            // Показываем кнопку через 15 секунд
-            payNowButton.visibility = View.VISIBLE
-        }, 4000)
-
-        payNowButton.setOnClickListener {
-            // Имитация успешной оплаты
-
-            val orderId = databaseReference.push().key ?: return@setOnClickListener
-
-            val order2 = order1.split("\n")
-
-            val order = mutableMapOf(
-                "name" to name,
-                "phone" to phone,
-                "address" to address,
-                "totalPrice" to "${totalPrice} руб",
-                "order" to order2
-            )
-//            cartListString.forEachIndexed { index, item ->
-//                order["product_$index"] = item
-//            }
-
-            databaseReference.child(orderId).setValue(order)
-                .addOnSuccessListener {
-                    Toast.makeText(this, "Оплата завершена. Заказ создан", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, LoginActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                    startActivity(intent)
-                }
-                .addOnFailureListener { e ->
-                    Toast.makeText(this, "Ошибка регистрации: ${e.message}", Toast.LENGTH_SHORT).show()
-                }
+            override fun onFinish() {
+                // По завершении отсчёта переходим на страницу GalleryOfProduct
+                val intent = Intent(this@CheckoutActivity, GalleryOfProductsActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                startActivity(intent)
+            }
         }
-    }
 
-//    private fun saveOrderToFirebase(name: String, phone: String, address: String, totalPrice: Double, cartList: List<Product>) {
-//        // Подготовка данных для Firebase
-//        val order = hashMapOf(
-//            "name" to name,
-//            "phone" to phone,
-//            "address" to address,
-//            "totalPrice" to totalPrice,
-//            "cartItems" to cartList.map { it.name } // Отправляем только имена продуктов
-//        )
-//
-//        // Отправка данных в Firestore
-//        val db = FirebaseFirestore.getInstance("https://ecomappbd-69524-default-rtdb.europe-west1.firebasedatabase.app")
-//        db.collection("orders")
-//            .add(order)
-//            .addOnSuccessListener {
-//                Toast.makeText(this, "Оплата завершена. Спасибо за заказ!", Toast.LENGTH_SHORT).show()
-//
-//                // Завершаем процесс заказа
-//                val intent = Intent(this, MainActivity::class.java)
-//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-//                startActivity(intent)
-//            }
-//            .addOnFailureListener { e ->
-//                Toast.makeText(this, "Ошибка сохранения: ${e.message}", Toast.LENGTH_SHORT).show()
-//            }
-//    }
+        // Запускаем таймер
+        timer.start()
+    }
 }

@@ -34,8 +34,8 @@ class CartAdapter(
 
         holder.productImage.setImageResource(product.imageResId)
         holder.productName.text = product.name
-        holder.productWeight.text = "Вес: ${product.weight}"
-        holder.productPrice.text = "Цена: ${product.price}"
+        holder.productWeight.text = "${product.weight} кг"
+        holder.productPrice.text = "${product.price} ₽"
         holder.productQuantity.text = product.quantity.toString()
 
         var currentQuantity = 1

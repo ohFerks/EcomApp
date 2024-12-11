@@ -22,7 +22,6 @@ class GalleryOfProductsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_gallery_of_products)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -51,13 +50,6 @@ class GalleryOfProductsActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
 
         cartButton.setOnClickListener {
-//            for (n in 0..cartList.size - 1){
-//                val prod = cartList[n].name
-//                Toast.makeText(this, "$prod", Toast.LENGTH_LONG).show()
-//            }
-
-
-            //Toast.makeText(this, "$cartList", Toast.LENGTH_LONG).show()
             val intent = Intent(this, CartActivity::class.java)
             intent.putParcelableArrayListExtra("cartList", ArrayList(cartList))
             startActivity(intent)

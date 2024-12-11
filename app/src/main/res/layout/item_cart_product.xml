@@ -9,15 +9,15 @@
     <!-- Левая часть: Фотография продукта -->
     <ImageView
         android:id="@+id/cartProductImage"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_gravity="center_vertical"
         android:layout_marginEnd="8dp" />
 
     <!-- Правая часть: Название, вес, цена -->
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_weight="1"
         android:orientation="vertical"
         android:gravity="center_vertical">
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Название продукта"
-            android:textSize="16sp"
+            android:textSize="11sp"
             android:textStyle="bold"
             android:paddingBottom="4dp" />
 
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Вес: 500г"
-            android:textSize="14sp"
+            android:textSize="9sp"
             android:paddingBottom="4dp" />
 
         <!-- Цена продукта -->

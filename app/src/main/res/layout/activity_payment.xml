@@ -9,7 +9,7 @@
     <EditText
         android:id="@+id/nameInput"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:hint="Введите ваше имя"
         android:inputType="textPersonName"
         android:padding="8dp"
@@ -19,7 +19,7 @@
     <EditText
         android:id="@+id/phoneInput"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:hint="Введите номер телефона"
         android:inputType="phone"
         android:padding="8dp"
@@ -29,7 +29,7 @@
     <EditText
         android:id="@+id/addressInput"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:hint="Введите адрес доставки"
         android:inputType="textPostalAddress"
         android:padding="8dp"
