@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -25,7 +26,7 @@ class CartActivity : AppCompatActivity() {
 
         val recyclerView: RecyclerView = findViewById(R.id.cartRecyclerView)
         val payButton: Button = findViewById(R.id.payButton)
-        val goBackButton: Button = findViewById(R.id.goBackButton)
+        val goBackIcon: ImageView = findViewById(R.id.arrowicon)
 
         cartList = intent.getParcelableArrayListExtra("cartList") ?: mutableListOf()
 
@@ -35,6 +36,11 @@ class CartActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
+
+        // Возврат обратно в корзину
+        goBackIcon.setOnClickListener {
+            finish()
+        }
 
         payButton.setOnClickListener {
             if (cartList.isEmpty()){
@@ -50,10 +56,6 @@ class CartActivity : AppCompatActivity() {
                 intent.putExtra("products", products)
                 startActivity(intent)
             }
-        }
-
-        goBackButton.setOnClickListener {
-            finish() // Возвращаемся в GalleryActivity
         }
 
         calculateTotalPrice()
