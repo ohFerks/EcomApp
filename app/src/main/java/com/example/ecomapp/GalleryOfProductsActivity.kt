@@ -79,8 +79,7 @@ class GalleryOfProductsActivity : AppCompatActivity() {
                             val price = productData["text2"]?.toString()?.toIntOrNull() ?: 0
                             val weight = productData["weight"]?.toString()?.toDoubleOrNull() ?: 1.0
                             val quantity = 1
-                            val imageResource = R.drawable.kapusta
-
+                            val imageResource = productData["imageResource"]?.toString()?.toIntOrNull() ?: R.drawable.apple
                             val product = Product(id, name, price, weight, quantity, imageResource)
                             productList.add(product)
                         } catch (e: Exception) {

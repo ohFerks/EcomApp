@@ -58,9 +58,5 @@ class CartActivity : AppCompatActivity() {
 
     private fun calculateTotalPrice() {
         totalPrice = cartList.sumOf { it.price * it.quantity }
-
-        // Format the total price to two decimal places
-        val formattedPrice = String.format("%.2f", totalPrice)
-        findViewById<TextView>(R.id.totalPrice).text = "Итого: $formattedPrice ₽"
     }
 }

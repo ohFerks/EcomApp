@@ -28,6 +28,7 @@
         <activity
             android:name=".GalleryOfProductsActivity"
             android:exported="true" >
+
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
@@ -39,23 +40,10 @@
             android:name=".RegistrationActivity"
             android:exported="true" />
 
-    <activity
-            android:name=".AdressAndNumberActivity"
-            android:exported="true" />
-
         <activity
             android:name=".a1"
             android:exported="true"/>
 
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".AuthActivity"
-            android:exported="false">
-        </activity>
         <activity android:name=".LoginActivity" />
 
         <meta-data
