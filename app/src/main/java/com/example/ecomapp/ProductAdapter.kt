@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import android.widget.LinearLayout
 
 class ProductAdapter(
     private val productList: List<Product>, // Список продуктов для отображения
@@ -20,6 +21,10 @@ class ProductAdapter(
         val productPrice: TextView = itemView.findViewById(R.id.productPrice)
         val productWeight: TextView = itemView.findViewById(R.id.productWeight)
         val addToCartButton: Button = itemView.findViewById(R.id.addToCartButton)
+        val cartCounterLayout: LinearLayout = itemView.findViewById(R.id.cartCounterLayout)
+        val cartCounter: TextView = itemView.findViewById(R.id.cartCounter)
+        val plusButton: Button = itemView.findViewById(R.id.plusButton)
+        val minusButton: Button = itemView.findViewById(R.id.minusButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
@@ -30,30 +35,49 @@ class ProductAdapter(
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product = productList[position]
 
-        // Заполняем данные продукта
+        // Настраиваем продукт
         holder.productImage.setImageResource(product.imageResId)
         holder.productName.text = product.name
         holder.productPrice.text = "${product.price} ₽"
         holder.productWeight.text = "${product.weight} г"
 
-        // Логика кнопки "Добавить в корзину"
-        var isInCart = false // Состояние кнопки для текущего продукта
+        var quantity = 0 // Текущее количество продукта
 
+        // Отображение кнопки "Добавить в корзину"
+        holder.addToCartButton.visibility = View.VISIBLE
+        holder.cartCounterLayout.visibility = View.GONE
+
+        // Логика для кнопки "Добавить в корзину"
         holder.addToCartButton.setOnClickListener {
-            isInCart = !isInCart
-            if (isInCart) {
-                holder.addToCartButton.setBackgroundColor(Color.parseColor("#EDF4C1"))
-                holder.addToCartButton.text = "В корзине"
-                holder.addToCartButton.width = 120
-                holder.addToCartButton.height = 55
-                onCartButtonClicked(product, true) // Сообщаем, что продукт добавлен в корзину
+            quantity = 1 // Устанавливаем начальное количество
+            holder.cartCounterLayout.visibility = View.VISIBLE // Показываем счётчик
+            holder.addToCartButton.visibility = View.GONE // Прячем кнопку
+            holder.cartCounter.text = quantity.toString()
+            onCartButtonClicked(product, true)
+        }
+
+        // Логика кнопки "+"
+        holder.plusButton.setOnClickListener {
+            quantity++
+            holder.cartCounter.text = quantity.toString()
+            onCartButtonClicked(product, true)
+        }
+
+        // Логика кнопки "-"
+        holder.minusButton.setOnClickListener {
+            if (quantity > 1) {
+                quantity--
+                holder.cartCounter.text = quantity.toString()
             } else {
-                holder.addToCartButton.setBackgroundColor(Color.parseColor("#FFFFFF"))
-                holder.addToCartButton.text = "Добавить в корзину"
-                onCartButtonClicked(product, false) // Сообщаем, что продукт удалён из корзины
+                // Если количество становится 0, убираем счётчик
+                quantity = 0
+                holder.cartCounterLayout.visibility = View.GONE
+                holder.addToCartButton.visibility = View.VISIBLE
+                onCartButtonClicked(product, false)
             }
         }
     }
+
 
     override fun getItemCount() = productList.size
 }
