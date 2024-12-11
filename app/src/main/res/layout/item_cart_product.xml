@@ -11,7 +11,11 @@
         android:id="@+id/cartProductImage"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginEnd="8dp"/>
+        android:layout_marginEnd="8dp"
+        android:adjustViewBounds="true"
+
+        android:scaleType="centerCrop"
+        android:lines='2'/>
 
     <!-- Правая часть: Название, вес, цена -->
     <LinearLayout
