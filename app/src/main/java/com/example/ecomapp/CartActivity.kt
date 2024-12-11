@@ -25,8 +25,11 @@ class CartActivity : AppCompatActivity() {
         setContentView(R.layout.activity_cart)
 
         val recyclerView: RecyclerView = findViewById(R.id.cartRecyclerView)
-        val payButton: Button = findViewById(R.id.payButton)
+        //val payButton: Button = findViewById(R.id.payButton)
+        val payTextButton: TextView = findViewById(R.id.payTextButton)
         val goBackIcon: ImageView = findViewById(R.id.arrowicon)
+
+
 
         cartList = intent.getParcelableArrayListExtra("cartList") ?: mutableListOf()
 
@@ -42,7 +45,7 @@ class CartActivity : AppCompatActivity() {
             finish()
         }
 
-        payButton.setOnClickListener {
+        payTextButton.setOnClickListener{
             if (cartList.isEmpty()){
                 Toast.makeText(this, "Добавьте продукты для перехода к оплате", Toast.LENGTH_LONG).show()
             }
@@ -58,6 +61,22 @@ class CartActivity : AppCompatActivity() {
             }
         }
 
+//        payButton.setOnClickListener {
+//            if (cartList.isEmpty()){
+//                Toast.makeText(this, "Добавьте продукты для перехода к оплате", Toast.LENGTH_LONG).show()
+//            }
+//            else{
+//                val products = cartList.joinToString(separator = "\n") { product ->
+//                    "${product.name} ${product.weight * product.quantity} кг"
+//                }
+//
+//                val intent = Intent(this, PaymentActivity::class.java)
+//                intent.putExtra("totalPrice", totalPrice)
+//                intent.putExtra("products", products)
+//                startActivity(intent)
+//            }
+//        }
+
         calculateTotalPrice()
     }
 
@@ -66,6 +85,6 @@ class CartActivity : AppCompatActivity() {
 
         // Format the total price to two decimal places
         val formattedPrice = String.format("%.2f", totalPrice)
-        findViewById<TextView>(R.id.totalPrice).text = "Итого: $formattedPrice ₽"
+        findViewById<TextView>(R.id.totalPrice).text = "$formattedPrice ₽"
     }
 }
