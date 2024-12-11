@@ -1,0 +1,17 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Тень -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#55000000" /> <!-- Цвет тени -->
+            <corners android:radius="8dp" /> <!-- Закруглённые углы тени -->
+        </shape>
+    </item>
+
+    <!-- Основной фон кнопки -->
+    <item android:left="3dp" android:top="3dp" android:right="3dp" android:end="3dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" /> <!-- Основной цвет кнопки -->
+            <corners android:radius="8dp" /> <!-- Закруглённые углы кнопки -->
+        </shape>
+    </item>
+</layer-list>

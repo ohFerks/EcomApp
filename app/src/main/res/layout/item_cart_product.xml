@@ -3,21 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="8dp"
-    android:background="#EFEFEF">
+    android:padding="0dp"
+    android:background="@drawable/round_for_cart1">
 
     <!-- Левая часть: Фотография продукта -->
     <ImageView
         android:id="@+id/cartProductImage"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"/>
 
     <!-- Правая часть: Название, вес, цена -->
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="75dp"
+        android:layout_height="70dp"
         android:layout_weight="1"
         android:orientation="vertical"
         android:gravity="center_vertical">
@@ -57,13 +56,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
+        android:background="@drawable/round_for_cart"
         android:gravity="center_vertical">
 
         <Button
             android:id="@+id/minusButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:backgroundTint="#FFFFFF"
+            android:elevation="8dp"
             android:padding="0dp"
             android:text="—"
             android:textSize="15sp"
