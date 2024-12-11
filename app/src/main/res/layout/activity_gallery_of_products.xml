@@ -17,36 +17,71 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/profileIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:id="@+id/profileicon"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
             android:clickable="true"
             android:focusable="true"
             android:src="@drawable/menuicon"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
+            android:textAlignment="center"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="75dp"
+            android:layout_marginLeft="30dp"
 
             android:fontFamily="@font/montserrat_alternates_bold"
-            android:text="Шаповалова 2А"
+            android:text="Шаповалова, 2А >"
             android:clickable="true"
 
             android:textColor="#000000"
-            android:textSize="16sp"
+            android:textSize="13sp"
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/profileIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="75dp"
+            android:id="@+id/profileicon"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginLeft="30dp"
             android:clickable="true"
             android:focusable="true"
             android:src="@drawable/profileicon"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
 
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/lupaicon">
+
+        </ImageView>
+
+        <EditText
+            android:id="@+id/searchBox"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:hint="Найти в Грядке"
+            android:textAlignment="center"
+            android:fontFamily="@font/montserrat_alternates_bold"
+            android:padding="12dp"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:layout_marginEnd="8dp"
+            android:textStyle="bold"
+
+            android:background="@drawable/for_search"/>
+
+
+    </LinearLayout>
 
 
     <TextView
