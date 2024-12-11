@@ -14,7 +14,7 @@ import kotlin.reflect.typeOf
 class CartActivity : AppCompatActivity() {
 
     private var cartList = mutableListOf<Product>()
-    private var totalPrice = 0.0
+    private var totalPrice = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

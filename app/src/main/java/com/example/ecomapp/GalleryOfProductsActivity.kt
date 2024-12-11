@@ -59,7 +59,7 @@ class GalleryOfProductsActivity : AppCompatActivity() {
 
             //Toast.makeText(this, "$cartList", Toast.LENGTH_LONG).show()
             val intent = Intent(this, CartActivity::class.java)
-            intent.putParcelableArrayListExtra("cartList", ArrayList(cartList))
+            //intent.putParcelableArrayListExtra("cartList", ArrayList(cartList))
             startActivity(intent)
         }
 
@@ -76,7 +76,7 @@ class GalleryOfProductsActivity : AppCompatActivity() {
                         try {
                             val id = productData["id"]?.toString()?.toIntOrNull() ?: 0
                             val name = productData["text1"]?.toString() ?: "Без имени"
-                            val price = productData["text2"]?.toString()?.toDoubleOrNull() ?: 0.0
+                            val price = productData["text2"]?.toString()?.toIntOrNull() ?: 0
                             val weight = productData["weight"]?.toString()?.toDoubleOrNull() ?: 1.0
                             val quantity = 1
                             val imageResource = R.drawable.kapusta
