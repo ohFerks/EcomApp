@@ -68,8 +68,8 @@ class a1 : AppCompatActivity() {
     }
 
     private fun showImageSelectionDialog() {
-        val imageOptions = arrayOf("Капуста", "Морковь", "Картофель")
-        val imageResources = arrayOf(R.drawable.kapusta, R.drawable.tomato, R.drawable.orangetomato)
+        val imageOptions = arrayOf("Капуста", "Морковь", "Картофель", "Баклажан", "Кукуруза")
+        val imageResources = arrayOf(R.drawable.kapusta, R.drawable.tomato, R.drawable.orangetomato, R.drawable.baklajany, R.drawable.kukuruzka)
 
         val builder = android.app.AlertDialog.Builder(this)
         builder.setTitle("Выберите изображение")

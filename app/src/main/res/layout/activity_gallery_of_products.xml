@@ -9,24 +9,43 @@
     android:orientation="vertical"
     tools:context=".GalleryOfProductsActivity">
 
-    <Button
-        android:id="@+id/goToProfileButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="30dp"
-        android:backgroundTint="@color/black"
-        android:text="Перейти в профиль"
-        android:textColor="@android:color/white"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:background="@color/white"
+        android:orientation="horizontal">
 
-        android:textSize="16sp" />
+        <ImageView
+            android:id="@+id/profileIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/menuicon"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="75dp"
 
+            android:fontFamily="@font/montserrat_alternates_bold"
+            android:text="Шаповалова 2А"
+            android:clickable="true"
 
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-
-
-
-
+        <ImageView
+            android:id="@+id/profileIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="75dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/profileicon"/>
+    </LinearLayout>
 
 
 
@@ -34,7 +53,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="14dp"
-        android:layout_marginTop="40dp"
         android:fontFamily="@font/montserrat_alternates_bold"
         android:text="Продукты"
         android:textColor="#000000"
@@ -56,7 +74,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
+            android:gravity="bottom"
             android:background="#EFF1E4"
             android:orientation="vertical">
 
@@ -65,10 +83,13 @@
                 android:id="@+id/goToCartButton"
                 android:layout_width="364dp"
                 android:layout_height="50dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginBottom="10dp"
                 android:text="В корзину"
                 android:backgroundTint="#0D7255"/>
 
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
 
