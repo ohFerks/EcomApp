@@ -109,20 +109,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="bottom"
+            android:gravity="center"
             android:background="#EFF1E4"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
 
             <Button
                 android:id="@+id/goToCartButton"
                 android:layout_width="364dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginBottom="10dp"
                 android:text="В корзину"
                 android:backgroundTint="#0D7255"/>
-
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/lupaicon"/>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
