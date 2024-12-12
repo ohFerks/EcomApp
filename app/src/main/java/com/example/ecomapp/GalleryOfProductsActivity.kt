@@ -61,7 +61,7 @@ class GalleryOfProductsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-         // Загружаем данные из Firebase
+        setupSearchBox()
     }
 
     private fun loadProductsFromDatabase() {
@@ -77,7 +77,9 @@ class GalleryOfProductsActivity : AppCompatActivity() {
                             val price = productData["text2"]?.toString()?.toDoubleOrNull() ?: 0.0
                             val weight = productData["weight"]?.toString()?.toDoubleOrNull() ?: 1.0
                             val quantity = 1
-                            val imageResource = R.drawable.kapusta
+                            // Загрузка имени ресурса картинки из базы
+                            val imageName = productData["imageResource"]?.toString() ?: "default_image"
+                            val imageResource = getImageResourceFromName(imageName)
 
                             val product = Product(id, name, price, weight, quantity, imageResource)
                             productList.add(product)
@@ -102,6 +104,11 @@ class GalleryOfProductsActivity : AppCompatActivity() {
                 ).show()
             }
         })
+    }
+
+    private fun getImageResourceFromName(imageName: String): Int {
+        return resources.getIdentifier(imageName, "drawable", packageName).takeIf { it != 0 }
+            ?: R.drawable.apple // Используем дефолтную картинку, если ресурс не найден
     }
 
     private fun setupSearchBox() {
