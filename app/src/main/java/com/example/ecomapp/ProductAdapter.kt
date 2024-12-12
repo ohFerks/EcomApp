@@ -33,8 +33,8 @@ class ProductAdapter(
         // Заполняем данные продукта
         holder.productImage.setImageResource(product.imageResId)
         holder.productName.text = product.name
-        holder.productPrice.text = "Цена: ${product.price} ₽"
-        holder.productWeight.text = "Вес: ${product.weight}"
+        holder.productPrice.text = "${product.price} ₽"
+        holder.productWeight.text = "${product.weight} кг"
 
         // Логика кнопки "Добавить в корзину"
         var isInCart = false // Состояние кнопки для текущего продукта

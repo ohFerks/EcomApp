@@ -1,51 +1,125 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="112dp"
+    android:layout_height="224dp"
     android:orientation="vertical"
-    android:background="#EDF4C1"
-    android:padding="8dp">
+    android:layout_marginLeft="11dp"
+    android:layout_marginTop="8dp"
 
-    <ImageView
-        android:id="@+id/productImage"
+    android:background="@drawable/rounded_background2">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        app:cardCornerRadius="15dp"
+        android:clickable="true"
+        app:cardElevation="7dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/productImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+
+                android:scaleType="centerCrop"
+                android:lines='2'
+                android:src="@drawable/baklajany" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/productPrice"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/baklajany" />
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:includeFontPadding="false"
+        android:paddingLeft="6dp"
+        android:layout_marginTop="5dp"
+        android:text="200₽"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/productName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Product Name"
-        android:textSize="16sp"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:paddingTop="8dp" />
+        android:includeFontPadding="false"
+        android:paddingLeft="6dp"
+        android:text="Баклажаны"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/montserrat_alternates"
+        android:textColor="@color/black"
 
-    <TextView
-        android:id="@+id/productPrice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Price: $10"
-        android:textSize="14sp"
-        android:paddingTop="4dp" />
+        android:textSize="12sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/productWeight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Weight: 500g"
-        android:textSize="14sp"
-        android:paddingTop="4dp" />
+        android:includeFontPadding="false"
+        android:paddingLeft="6dp"
+        android:text="500 г"
+        android:fontFamily="@font/montserrat_alternates"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
 
     <Button
         android:id="@+id/addToCartButton"
-        android:layout_width="120dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#FFFFFF"
-        android:text="Добавить в корзину"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="20dp"
+
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:fontFamily="@font/montserrat_alternates_bold"
+        android:includeFontPadding="false"
+        android:text="В корзину"
         android:textAlignment="center"
-        android:textColor="#000000" />
+        android:textSize="9dp" />
+    <LinearLayout
+        android:id="@+id/cartCounterLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/minusButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:backgroundTint="@color/white"
+            android:text="-"
+            android:textSize="4sp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/cartCounter"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:background="@drawable/rounded_background2"
+            android:text="1"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/plusButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:backgroundTint="@color/white"
+            android:text="+"
+            android:textSize="4sp"
+            android:textColor="@color/black" />
+    </LinearLayout>
 </LinearLayout>
