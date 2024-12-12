@@ -18,6 +18,7 @@ import com.google.firebase.database.*
 class GalleryOfProductsActivity : AppCompatActivity() {
 
     private val productList = mutableListOf<Product>() // Динамический список продуктов
+    private val filteredList = mutableListOf<Product>() // Отфильтрованный список
     private val cartList = mutableListOf<Product>() // Список корзины
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ProductAdapter
