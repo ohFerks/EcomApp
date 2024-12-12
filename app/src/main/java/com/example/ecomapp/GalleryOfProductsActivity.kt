@@ -2,7 +2,10 @@ package com.example.ecomapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +22,7 @@ class GalleryOfProductsActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ProductAdapter
     private lateinit var databaseReference: DatabaseReference
+    private lateinit var searchBox: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +42,7 @@ class GalleryOfProductsActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = GridLayoutManager(this, 3)
 
+        searchBox = findViewById(R.id.searchBox)
         loadProductsFromDatabase()
 
         adapter = ProductAdapter(productList) { product, isAdded ->
@@ -96,5 +101,30 @@ class GalleryOfProductsActivity : AppCompatActivity() {
                 ).show()
             }
         })
+    }
+
+    private fun setupSearchBox() {
+        searchBox.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                val query = s.toString().lowercase()
+                filterProducts(query)
+            }
+        })
+    }
+
+    private fun filterProducts(query: String) {
+        filteredList.clear()
+        if (query.isEmpty()) {
+            filteredList.addAll(productList) // Если строка поиска пустая, показываем всё
+        } else {
+            filteredList.addAll(productList.filter { product ->
+                product.name.lowercase().contains(query)
+            })
+        }
+        adapter.notifyDataSetChanged()
     }
 }
