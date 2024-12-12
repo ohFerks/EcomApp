@@ -46,7 +46,7 @@ class GalleryOfProductsActivity : AppCompatActivity() {
         searchBox = findViewById(R.id.searchBox)
         loadProductsFromDatabase()
 
-        adapter = ProductAdapter(productList) { product, isAdded ->
+        adapter = ProductAdapter(filteredList) { product, isAdded ->
             if (isAdded) {
                 cartList.add(product)
             } else {
@@ -93,6 +93,8 @@ class GalleryOfProductsActivity : AppCompatActivity() {
                     }
                 }
 
+                filteredList.clear()
+                filteredList.addAll(productList)
                 adapter.notifyDataSetChanged()
             }
 
