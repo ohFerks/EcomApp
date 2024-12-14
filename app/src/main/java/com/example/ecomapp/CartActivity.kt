@@ -20,12 +20,12 @@ class CartActivity : AppCompatActivity() {
     private var cartList = mutableListOf<Product>()
     private var totalPrice = 0.0
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
 
         val recyclerView: RecyclerView = findViewById(R.id.cartRecyclerView)
-        //val payButton: Button = findViewById(R.id.payButton)
         val payTextButton: TextView = findViewById(R.id.payTextButton)
         val goBackIcon: ImageView = findViewById(R.id.arrowicon)
 
@@ -42,6 +42,9 @@ class CartActivity : AppCompatActivity() {
 
         // Возврат обратно в корзину
         goBackIcon.setOnClickListener {
+            val intent = Intent()
+            intent.putParcelableArrayListExtra("updatedCartList", ArrayList(cartList))
+            setResult(RESULT_OK, intent)
             finish()
         }
 
@@ -60,22 +63,6 @@ class CartActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-
-//        payButton.setOnClickListener {
-//            if (cartList.isEmpty()){
-//                Toast.makeText(this, "Добавьте продукты для перехода к оплате", Toast.LENGTH_LONG).show()
-//            }
-//            else{
-//                val products = cartList.joinToString(separator = "\n") { product ->
-//                    "${product.name} ${product.weight * product.quantity} кг"
-//                }
-//
-//                val intent = Intent(this, PaymentActivity::class.java)
-//                intent.putExtra("totalPrice", totalPrice)
-//                intent.putExtra("products", products)
-//                startActivity(intent)
-//            }
-//        }
 
         calculateTotalPrice()
     }

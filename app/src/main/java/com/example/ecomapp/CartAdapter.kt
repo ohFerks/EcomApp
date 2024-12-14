@@ -38,36 +38,30 @@ class CartAdapter(
         holder.productPrice.text = "${product.price} ₽"
         holder.productQuantity.text = product.quantity.toString()
 
-        var currentQuantity = 1
-        holder.productQuantity.text = currentQuantity.toString()
-
         holder.minusButton.setOnClickListener {
             if (product.quantity > 1) {
                 product.quantity--
                 holder.productQuantity.text = product.quantity.toString()
+                //
+                //notifyItemChanged(position)
+
                 onQuantityChange(product, product.quantity) // Уведомляем об изменении
             }
+            else{
+                // Удаляем продукт, если количество равно 1
+                cartList.removeAt(position)
+                //
+                notifyItemRemoved(position)
+                //
+                onQuantityChange(product, 0)// Уведомляем о удалении продукта
+            }
         }
-
-//        holder.minusButton.setOnClickListener {
-//            val quantity = holder.productQuantity.text.toString().toInt() - 1
-//            if (quantity > 0) {
-//                holder.productQuantity.text = quantity.toString()
-//                onQuantityChange(product, quantity)
-//            }
-//        }
 
         holder.plusButton.setOnClickListener {
             product.quantity++
             holder.productQuantity.text = product.quantity.toString()
             onQuantityChange(product, product.quantity) // Уведомляем об изменении
         }
-
-//        holder.plusButton.setOnClickListener {
-//            val quantity = holder.productQuantity.text.toString().toInt() + 1
-//            holder.productQuantity.text = quantity.toString()
-//            onQuantityChange(product, quantity)
-//        }
     }
 
     override fun getItemCount(): Int = cartList.size

@@ -1,7 +1,9 @@
 package com.example.ecomapp
 
+import android.os.Build
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.annotation.RequiresApi
 
 data class Product(
     val id: Int,
@@ -9,7 +11,8 @@ data class Product(
     val price: Double,
     val weight: Double,
     var quantity: Int = 1,
-    val imageResId: Int
+    val imageResId: Int,
+    var isInCart: String = "false"
 ) : Parcelable {
     // Конструктор для восстановления объекта из Parcel
     constructor(parcel: Parcel) : this(
@@ -18,7 +21,8 @@ data class Product(
         parcel.readDouble(),
         parcel.readDouble(),
         parcel.readInt(),
-        parcel.readInt()
+        parcel.readInt(),
+        parcel.readString() ?: ""
     )
 
     // Упаковка объекта в Parcel
@@ -29,6 +33,7 @@ data class Product(
         parcel.writeDouble(weight)
         parcel.writeInt(quantity)
         parcel.writeInt(imageResId)
+        parcel.writeString(isInCart)
     }
 
     override fun describeContents(): Int = 0

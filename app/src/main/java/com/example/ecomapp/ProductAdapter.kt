@@ -43,41 +43,53 @@ class ProductAdapter(
         holder.productPrice.text = "${product.price} ₽"
         holder.productWeight.text = "${product.weight} кг"
 
-        var quantity = 0
+        if (product.isInCart == "false"){
+            holder.addToCartButton.visibility = View.VISIBLE
+            holder.cartCounterLayout.visibility = View.GONE
+        }
+        else{
+            holder.cartCounterLayout.visibility = View.VISIBLE // Показываем счётчик
+            holder.addToCartButton.visibility = View.GONE // Прячем кнопку
+        }
 
-        // Логика кнопки "Добавить в корзину"
-        var isInCart = false // Состояние кнопки для текущего продукта
-
-        holder.addToCartButton.visibility = View.VISIBLE
-        holder.cartCounterLayout.visibility = View.GONE
+        holder.cartCounter.text = product.quantity.toString()
 
         // Логика для кнопки "Добавить в корзину"
         holder.addToCartButton.setOnClickListener {
-            quantity = 1 // Устанавливаем начальное количество
+            product.quantity = 1 // Устанавливаем начальное количество
             holder.cartCounterLayout.visibility = View.VISIBLE // Показываем счётчик
             holder.addToCartButton.visibility = View.GONE // Прячем кнопку
-            holder.cartCounter.text = quantity.toString()
-            onCartButtonClicked(product, true)
+            holder.cartCounter.text = product.quantity.toString()
+            if (product.isInCart == "false"){
+                notifyItemChanged(position)
+                onCartButtonClicked(product, true)
+                product.isInCart = "true"
+            }
+
         }
 
         // Логика кнопки "+"
         holder.plusButton.setOnClickListener {
-            quantity++
-            holder.cartCounter.text = quantity.toString()
+            product.quantity++
+            holder.cartCounter.text = product.quantity.toString()
+            //
             onCartButtonClicked(product, true)
         }
 
         // Логика кнопки "-"
         holder.minusButton.setOnClickListener {
-            if (quantity > 1) {
-                quantity--
-                holder.cartCounter.text = quantity.toString()
+            if (product.quantity > 1) {
+                product.quantity--
+                holder.cartCounter.text = product.quantity.toString()
+                //
+                onCartButtonClicked(product, true)
             } else {
                 // Если количество становится 0, убираем счётчик
-                quantity = 0
+                product.quantity = 0
                 holder.cartCounterLayout.visibility = View.GONE
                 holder.addToCartButton.visibility = View.VISIBLE
                 onCartButtonClicked(product, false)
+                product.isInCart = "false"
             }
         }
     }
