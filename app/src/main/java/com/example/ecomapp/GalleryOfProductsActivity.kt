@@ -6,6 +6,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -39,6 +40,12 @@ class GalleryOfProductsActivity : AppCompatActivity() {
         databaseReference =
             FirebaseDatabase.getInstance("https://ecomappbd-69524-default-rtdb.europe-west1.firebasedatabase.app")
                 .getReference("a1")
+
+        val menuIcon: ImageView = findViewById(R.id.menuicon)
+        menuIcon.setOnClickListener {
+            val intent = Intent(this, SecondActivity::class.java)
+            startActivity(intent)
+        }
 
         val cartButton: Button = findViewById(R.id.goToCartButton)
 
