@@ -90,7 +90,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <Button
             android:id="@+id/minusButton"
@@ -98,12 +98,11 @@
             android:layout_height="40dp"
             android:gravity="center"
             android:backgroundTint="#EDF4C1"
-            android:paddingTop="10dp"
             android:paddingHorizontal="-10dp"
-            android:paddingVertical="-10dp"
+            android:paddingVertical="-5dp"
             android:includeFontPadding="false"
             android:text="-"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:textColor="@color/black" />
 
         <TextView
@@ -125,11 +124,11 @@
             android:gravity="center"
             android:paddingTop="10dp"
             android:paddingHorizontal="-10dp"
-            android:paddingVertical="-7dp"
+            android:paddingVertical="6.5dp"
             android:includeFontPadding="false"
             android:backgroundTint="#EDF4C1"
             android:text="+"
-            android:textSize="15dp"
+            android:textSize="20dp"
             android:textColor="@android:color/black" />
     </LinearLayout>
 </LinearLayout>
