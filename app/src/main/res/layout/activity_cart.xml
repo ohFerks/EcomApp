@@ -41,8 +41,8 @@
 
         <ImageView
             android:id="@+id/profileicon"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:clickable="true"
             android:focusable="true" />
     </LinearLayout>

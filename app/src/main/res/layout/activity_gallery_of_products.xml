@@ -16,16 +16,16 @@
         android:background="@color/white"
         android:orientation="horizontal">
         <FrameLayout
+            android:id="@+id/menuicon"
             android:layout_width="50dp"
             android:layout_height="50dp">
             <ImageView
-                android:id="@+id/menuicon"
                 android:layout_width="17dp"
                 android:layout_height="17dp"
                 android:layout_gravity="center"
                 android:clickable="true"
                 android:focusable="true"
-                android:src="@drawable/menuicon"/>
+                android:src="@drawable/supporticon"/>
         </FrameLayout>
         <TextView
             android:layout_width="250dp"

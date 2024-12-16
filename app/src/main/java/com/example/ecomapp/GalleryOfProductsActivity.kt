@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.content.Context
 import android.content.res.Configuration
+import android.widget.FrameLayout
 import com.google.firebase.database.*
 
 class GalleryOfProductsActivity : AppCompatActivity() {
@@ -43,7 +44,7 @@ class GalleryOfProductsActivity : AppCompatActivity() {
             FirebaseDatabase.getInstance("https://ecomappbd-69524-default-rtdb.europe-west1.firebasedatabase.app")
                 .getReference("a1")
 
-        val menuIcon: ImageView = findViewById(R.id.menuicon)
+        val menuIcon: FrameLayout = findViewById(R.id.menuicon)
         menuIcon.setOnClickListener {
             val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)

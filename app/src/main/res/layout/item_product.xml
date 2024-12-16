@@ -70,14 +70,12 @@
         android:fontFamily="@font/montserrat_alternates"
         android:textColor="@color/black"
         android:textSize="15sp" />
-
     <Button
         android:id="@+id/addToCartButton"
         android:layout_width="105dp"
         android:layout_height="40dp"
         android:layout_marginLeft="3dp"
         android:layout_marginTop="5dp"
-
         android:backgroundTint="@color/white"
         android:textColor="@color/black"
         android:fontFamily="@font/montserrat_alternates_bold"
@@ -85,44 +83,53 @@
         android:text="В корзину"
         android:textAlignment="center"
         android:textSize="10dp" />
+
     <LinearLayout
         android:id="@+id/cartCounterLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
-        android:visibility="gone"
-        android:layout_marginTop="15dp">
+        android:visibility="visible">
 
         <Button
             android:id="@+id/minusButton"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/montserrat_alternates_bold"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:backgroundTint="#EDF4C1"
+            android:paddingTop="10dp"
+            android:paddingHorizontal="-10dp"
+            android:paddingVertical="-10dp"
+            android:includeFontPadding="false"
             android:text="-"
-            android:textSize="4sp"
+            android:textSize="25sp"
             android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/cartCounter"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_weight="0"
             android:gravity="center"
             android:background="@drawable/rounded_background2"
             android:text="1"
-            android:fontFamily="@font/montserrat_alternates_bold"
-            android:textColor="@color/black"
-            android:textSize="13sp" />
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:fontFamily="@font/montserrat_alternates_bold" />
 
         <Button
             android:id="@+id/plusButton"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/montserrat_alternates_bold"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingHorizontal="-10dp"
+            android:paddingVertical="-7dp"
+            android:includeFontPadding="false"
+            android:backgroundTint="#EDF4C1"
             android:text="+"
-            android:textSize="4sp"
-            android:textColor="@color/black" />
+            android:textSize="15dp"
+            android:textColor="@android:color/black" />
     </LinearLayout>
 </LinearLayout>
