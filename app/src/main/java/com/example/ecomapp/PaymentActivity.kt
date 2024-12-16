@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import java.util.Locale
+import android.content.Context
+import android.content.res.Configuration
 
 class PaymentActivity : AppCompatActivity() {
 
@@ -103,6 +105,12 @@ class PaymentActivity : AppCompatActivity() {
 
         val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         return sdf.format(calendar.time)
+    }
+    override fun attachBaseContext(newBase: Context) {
+        val config = Configuration(newBase.resources.configuration)
+        config.fontScale = 1.0f // Блокируем изменение масштаба шрифтов
+        val newContext = newBase.createConfigurationContext(config)
+        super.attachBaseContext(newContext)
     }
 }
 

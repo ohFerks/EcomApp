@@ -14,6 +14,9 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.reflect.typeOf
+import android.content.Context
+import android.content.res.Configuration
+import android.widget.FrameLayout
 
 class CartActivity : AppCompatActivity() {
 
@@ -27,7 +30,7 @@ class CartActivity : AppCompatActivity() {
 
         val recyclerView: RecyclerView = findViewById(R.id.cartRecyclerView)
         val payTextButton: TextView = findViewById(R.id.payTextButton)
-        val goBackIcon: ImageView = findViewById(R.id.arrowicon)
+        val goBackIcon: FrameLayout = findViewById(R.id.arrowButton)
 
 
 
@@ -73,5 +76,11 @@ class CartActivity : AppCompatActivity() {
         // Format the total price to two decimal places
         val formattedPrice = String.format("%.2f", totalPrice)
         findViewById<TextView>(R.id.totalPrice).text = "$formattedPrice ₽"
+    }
+    override fun attachBaseContext(newBase: Context) {
+        val config = Configuration(newBase.resources.configuration)
+        config.fontScale = 1.0f // Блокируем изменение масштаба шрифтов
+        val newContext = newBase.createConfigurationContext(config)
+        super.attachBaseContext(newContext)
     }
 }

@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
+import android.content.Context
+import android.content.res.Configuration
 
 class CheckoutActivity : AppCompatActivity() {
 
@@ -43,5 +45,11 @@ class CheckoutActivity : AppCompatActivity() {
 
         // Запускаем таймер
         timer.start()
+    }
+    override fun attachBaseContext(newBase: Context) {
+        val config = Configuration(newBase.resources.configuration)
+        config.fontScale = 1.0f // Блокируем изменение масштаба шрифтов
+        val newContext = newBase.createConfigurationContext(config)
+        super.attachBaseContext(newContext)
     }
 }

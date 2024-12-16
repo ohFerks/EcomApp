@@ -14,6 +14,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import android.content.Context
+import android.content.res.Configuration
 import com.google.firebase.database.*
 
 class GalleryOfProductsActivity : AppCompatActivity() {
@@ -173,6 +175,13 @@ class GalleryOfProductsActivity : AppCompatActivity() {
                 filterProducts(query)
             }
         })
+    }
+
+    override fun attachBaseContext(newBase: Context) {
+        val config = Configuration(newBase.resources.configuration)
+        config.fontScale = 1.0f // Блокируем изменение масштаба шрифтов
+        val newContext = newBase.createConfigurationContext(config)
+        super.attachBaseContext(newContext)
     }
 
     private fun filterProducts(query: String) {
